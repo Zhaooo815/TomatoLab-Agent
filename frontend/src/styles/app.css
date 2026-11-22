@@ -1,0 +1,154 @@
+:root {
+  --paper: #f7f4ec;
+  --card: #fffdf8;
+  --ink: #1e2a26;
+  --muted: #6b7a72;
+  --leaf: #2f5d50;
+  --leaf-soft: #e6efe9;
+  --line: #ddd7c9;
+  --warn: #a4552a;
+  --warn-soft: #f7ebdf;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+a { color: var(--leaf); }
+
+.app {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 212px minmax(0, 1fr) 268px;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.nav,
+.side,
+.panel {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.nav { padding: 18px 14px; display: flex; flex-direction: column; gap: 6px; height: fit-content; position: sticky; top: 20px; }
+
+.brand { font-size: 17px; font-weight: 700; letter-spacing: 0.02em; line-height: 1.4; }
+.brand small { display: block; font-size: 12px; font-weight: 400; color: var(--muted); margin-top: 4px; }
+
+.nav button {
+  text-align: left;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink);
+  padding: 9px 11px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.nav button:hover { background: var(--leaf-soft); }
+.nav button.on { background: var(--leaf); color: #fff; }
+
+.panel { padding: 22px 24px; }
+.side { padding: 18px; height: fit-content; position: sticky; top: 20px; }
+
+h1 { font-size: 21px; margin: 0 0 6px; }
+h2 { font-size: 16px; margin: 22px 0 8px; }
+p.lead { color: var(--muted); margin: 0 0 18px; }
+
+label { display: block; font-size: 13px; color: var(--muted); margin: 12px 0 4px; }
+
+input, select, textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+  font: inherit;
+  color: var(--ink);
+}
+textarea { min-height: 92px; resize: vertical; }
+
+.row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.row > * { flex: 1 1 140px; }
+
+button.primary {
+  background: var(--leaf);
+  color: #fff;
+  border: none;
+  border-radius: 9px;
+  padding: 10px 16px;
+  font: inherit;
+  cursor: pointer;
+  margin-top: 14px;
+}
+button.primary:disabled { opacity: 0.5; cursor: default; }
+button.ghost {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--ink);
+}
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 14px 16px;
+  margin: 12px 0;
+  background: #fff;
+}
+.card .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; background: var(--leaf-soft); color: var(--leaf); }
+.tag.warn { background: var(--warn-soft); color: var(--warn); }
+.tag.mute { background: #eee; color: var(--muted); }
+.meta { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; }
+th, td { border-bottom: 1px solid var(--line); padding: 7px 8px; text-align: left; vertical-align: top; }
+th { background: var(--leaf-soft); font-weight: 600; font-size: 13px; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.err { color: var(--warn); font-size: 13px; margin-top: 8px; }
+
+.side h3 { font-size: 13px; letter-spacing: 0.06em; color: var(--muted); margin: 0 0 8px; font-weight: 600; }
+.side ul { margin: 0 0 16px; padding-left: 16px; font-size: 13px; color: var(--ink); }
+.side ul li { margin-bottom: 6px; }
+
+.badge-demo {
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--warn);
+  color: var(--warn);
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 1180px) {
+  .app { grid-template-columns: 196px minmax(0, 1fr); }
+  .side { display: none; }
+}
+@media (max-width: 860px) {
+  .app { grid-template-columns: 1fr; padding: 12px; }
+  .nav { position: static; flex-direction: row; flex-wrap: wrap; align-items: center; gap: 6px; }
+  .brand { width: 100%; }
+  .nav button { flex: 0 0 auto; padding: 7px 11px; }
+  .split { grid-template-columns: 1fr; }
+  .panel { padding: 18px 16px; }
+}
